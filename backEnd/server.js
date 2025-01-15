@@ -7,14 +7,14 @@ import logger from "./middleware/logger.js";
 dotenv.config();
 const app = express();
 
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(logger);
 // api for my router.
 
 app.use("/api/auth", authRoutes);
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   connectDb();
-  console.log("server running on port: ", port);
+  console.log("server running on port: ", PORT);
 });
