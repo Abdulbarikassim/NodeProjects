@@ -3,24 +3,20 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema(
   {
     email: {
-      typeof: String,
-      require: true,
-    },
-    password: {
-      typeof: String,
-      require: true,
+      type: String,
+      required: true,
     },
     name: {
-      typeof: String,
-      require: true,
+      type: String,
+      required: true,
     },
     lastLogin: {
-      typeof: Date,
-      require: true,
+      type: Date,
+      required: true,
     },
     isVerified: {
-      typeof: Boolean,
-      require: true,
+      type: Boolean,
+      required: true,
     },
     resetPasswordToken: String,
     resetPasswordExpiresAt: Date,
@@ -31,5 +27,4 @@ const userSchema = new mongoose.Schema(
 );
 
 // create the user model with schema above.
-
 export const User = mongoose.model("User", userSchema);
