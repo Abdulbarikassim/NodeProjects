@@ -12,7 +12,9 @@ export const signup = async (req, res) => {
     const userAlreadyExits = await User.findOne({ email });
 
     if (userAlreadyExits) {
-      res.status(400).json({ success: false, message: "user Already exits " });
+      return res
+        .status(400)
+        .json({ success: false, message: "user Already exits " });
     }
 
     const hashedPassword = await bcryptjs.hash(password, 10);
@@ -31,6 +33,7 @@ export const signup = async (req, res) => {
       isVerified: false,
       lastLogin: Date.now(),
     });
+    console.log("user saved: ", user);
 
     await user.save();
 
